@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ client }} заказы</title>
+</head>
+<body>
+<h3>{{ client }} список заказов за последние {{ period }} дней</h3>
+{% if orders_base %}
+    {% for order, products in orders_base.items %}
+        {% for product in products %}
+        <ul>Товар: {{ product }}</ul>
+
+        {% endfor %}
+    <p>Общая стоимость: {{ order.total_price }}</p>
+
+    <p>Дата заказа: {{ order.date_order }}</p>
+
+    {% endfor %}
+{% else %}
+Список ваших заказов пуст
+
+{% endif %}
+</body>
+</html>
